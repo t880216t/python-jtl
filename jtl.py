@@ -107,7 +107,7 @@ class XMLParser(BaseParser):
         """
         self.context = etree.iterparse(source, events=('start', 'end'))
         self.context = iter(self.context)
-        event, self.root = self.context.next()
+        event, self.root = self.context.__next__()
         self.version = self.root.get('version')
 
     def _get_assertion_results(self, elem):
